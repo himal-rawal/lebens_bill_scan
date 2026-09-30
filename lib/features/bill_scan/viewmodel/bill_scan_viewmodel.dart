@@ -5,7 +5,6 @@ import 'package:flutter/widgets.dart';
 class BillScanViewModel extends ChangeNotifier {
   CameraController? controller;
   bool isReady = false;
-  String? capturedImage;
   Future<void> initializeCamera() async {
     try {
       final cameras = await availableCameras();
@@ -25,11 +24,10 @@ class BillScanViewModel extends ChangeNotifier {
     }
   }
 
-  Future<void> captureImage() async {
-    if (!isReady || controller == null) return;
+  Future<String> captureImage() async {
+    if (!isReady || controller == null) return "";
     final image = await controller!.takePicture();
-    capturedImage = image.path;
-    notifyListeners();
+    return image.path;
   }
 
   @override
