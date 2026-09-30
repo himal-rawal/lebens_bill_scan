@@ -1,7 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:lebens_bill_scan/features/bill_scan/viewmodel/bill_scan_viewmodel.dart';
-import 'package:lebens_bill_scan/features/image_edit/view/image_edit_view.dart';
+import 'package:lebens_bill_scan/features/image_edit/views/image_edit_view.dart';
 
 class BillScanView extends StatefulWidget {
   const BillScanView({super.key});
@@ -54,7 +54,7 @@ class _BillScanViewState extends State<BillScanView> {
                       onTap: () async {
                         final capturedImage = await _billScanViewModel
                             .captureImage();
-                        if (context.mounted) {
+                        if (context.mounted && capturedImage.isNotEmpty) {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
