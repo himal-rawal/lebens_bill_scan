@@ -35,4 +35,10 @@ class BillScanViewModel extends ChangeNotifier {
     controller?.dispose();
     super.dispose();
   }
+
+  Future<void> setFocusPoint(Offset point) async {
+    if (!isReady || controller == null) return;
+    await controller!.setFocusPoint(point);
+    await controller!.setExposurePoint(point);
+  }
 }
