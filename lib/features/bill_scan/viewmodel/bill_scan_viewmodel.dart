@@ -16,7 +16,7 @@ class BillScanViewModel extends ChangeNotifier {
         ResolutionPreset.high,
         enableAudio: false,
       );
-      controller?.initialize();
+      await controller?.initialize();
       isReady = true;
       notifyListeners();
     } catch (e) {
