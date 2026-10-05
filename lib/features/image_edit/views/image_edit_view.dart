@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:lebens_bill_scan/core/services/image_cropper_service.dart';
+import 'package:lebens_bill_scan/core/services/text_recognition_service.dart';
 
 class ImageEditView extends StatefulWidget {
   final String capturedImage;
@@ -64,7 +65,9 @@ class _ImageEditViewState extends State<ImageEditView> {
           icon: Icon(Icons.crop_sharp, color: Colors.black),
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            TextRecognitionService.recognizeText(currentImagePath);
+          },
           child: Text(
             'Done',
             style: TextStyle(
